@@ -11,7 +11,7 @@ import tool.function.ReadWrite;
 
 
 public class MainModelingDGA {
-
+// GIT test??
 	final String  esIndex = "dga",esType = "CRIME",element = "fileName";
 	final String featuresOutput = "virusData/featuresOutput.csv";
 	public static void main(String[] args) throws JSONException, IOException {
