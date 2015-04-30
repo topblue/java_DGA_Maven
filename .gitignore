@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /target/
 =======
+=======
+>>>>>>> d250f087728fcc83228dcd976f04c72a3c1732df
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -13,4 +16,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 >>>>>>> 31c80edceba73a87fbf3f522c434f2a103b8e32a
+=======
+>>>>>>> d250f087728fcc83228dcd976f04c72a3c1732df
