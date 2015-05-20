@@ -1,9 +1,6 @@
 package tool.function;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,7 +14,7 @@ public class MarkovModelUnigramDomainList {
  * @throws JSONException 
  * **/
 	public JSONObject markovModel(ArrayList<String> domainList) throws JSONException {
-		TestMarkov mainclass = new TestMarkov();
+//		TestMarkov mainclass = new TestMarkov();
 		ArrayList<String> uniqueList = new ArrayList<String>();
 		JSONObject result = new JSONObject();
 //		settingDomainList();	//假資料塞入

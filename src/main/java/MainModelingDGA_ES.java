@@ -10,12 +10,12 @@ import tool.function.ElasticsearchFunction;
 import tool.function.ReadWrite;
 
 
-public class MainModelingDGA {
+public class MainModelingDGA_ES {
 // GIT test??
 	final String  esIndex = "dga",esType = "CRIME",element = "fileName";
 	final String featuresOutput = "virusData/featuresOutput.csv";
 	public static void main(String[] args) throws JSONException, IOException {
-		MainModelingDGA mainClass = new MainModelingDGA();
+		MainModelingDGA_ES mainClass = new MainModelingDGA_ES();
 		ElasticsearchFunction esTool = new ElasticsearchFunction();
 		Main_characteristic mainCharacter = new Main_characteristic();
 		ReadWrite w = new ReadWrite();
@@ -27,6 +27,7 @@ public class MainModelingDGA {
 		for(String malware:malwareList){
 //			String malware = "cryptolocker_9CBB128E8211A7CD00729C159815CB1C";
 			System.out.println("MainModelingDGA main : "+malware);
+			/**
 			HashMap<String,Double> features = mainCharacter.characteristic(malware);
 			String f = features.get("f1")+","+features.get("f2")+","+features.get("f3")+","+features.get("f4")+","+
 					features.get("f5")+","+features.get("f6")+","+features.get("f7")+","+features.get("f8")+","+
@@ -34,8 +35,10 @@ public class MainModelingDGA {
 					features.get("f13")+","+features.get("f14")+","+features.get("f15")+","+
 					features.get("f16")+","+features.get("f17");
 			System.out.println(f);
+			
 			f=malware+","+f;
 			w.appendWrite(mainClass.featuresOutput, f);
+			**/
 		}
 
 //		String fileName = "BIN_CitadelPacked_2012-05";

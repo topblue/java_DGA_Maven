@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 import javax.management.AttributeList;
 
+import org.json.JSONException;
+
 import java_cup.internal_error;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Attribute;
@@ -20,29 +22,38 @@ import weka.core.Instances;
 public class KmeansF17 {
 
 	ArrayList<String> dataList = new ArrayList<String>();
-	public HashMap<Integer, ArrayList<String>> Kmeans() throws Exception {
+	
+
+//	public static void main(String[] args) throws Exception{
+//		KmeansF17 mainClass = new KmeansF17();
+//		HashMap<Integer, ArrayList<String>> map = mainClass.Kmeans();
+//		for(int i:map.keySet()){
+//			System.out.println(i +":"+map.get(i));
+//		}
+//	}
+	
+	public HashMap<Integer, ArrayList<String>> Kmeans(String featurePath , int k_value) throws Exception {
 		// TODO Auto-generated method stub
 //		KmeansF17 mainclass = new KmeansF17();
-		addToList();
+		addToList(featurePath);
 //		System.out.println(mainclass.dataList.get(0));
 //		System.out.println(mainclass.dataList.get(1));
-		HashMap<Integer, ArrayList<String>> result = feastVector(dataList);
+		HashMap<Integer, ArrayList<String>> result = feastVector(dataList,k_value);
 		return result;
 	}
 	
-	void addToList() throws IOException{
-		String filename = "virusData/featuresOutput.csv";
-		FileReader fr = new FileReader(filename);
+	void addToList(String featurePath) throws IOException{
+		FileReader fr = new FileReader(featurePath);
 		BufferedReader br = new BufferedReader(fr);
 		while (br.ready()) {
 			this.dataList.add(br.readLine());
 		}
 	}
-	HashMap<Integer, ArrayList<String>> feastVector(ArrayList<String> dataList) throws Exception{
+	HashMap<Integer, ArrayList<String>> feastVector(ArrayList<String> dataList,int k_value) throws Exception{
 		
 		int domainAmount = dataList.size();
-		int vectorAmount = 18;	//有多少
-		int groupSize = 5;	//群樹
+		int vectorAmount = 17;	//有多少
+		int groupSize = k_value;	//群樹
 		
 		Attribute Attribute1 = new Attribute("f1");
 		Attribute Attribute2 = new Attribute("f2");
@@ -60,9 +71,9 @@ public class KmeansF17 {
 		Attribute Attribute14 = new Attribute("f14");
 		Attribute Attribute15 = new Attribute("f15");
 		Attribute Attribute16 = new Attribute("f16");
-		Attribute Attribute17 = new Attribute("f17");
+//		Attribute Attribute17 = new Attribute("f17");
 		
-		FastVector fvWekaAttributes = new FastVector(18);
+	FastVector fvWekaAttributes = new FastVector(17);
 		fvWekaAttributes.addElement(Attribute1);    
 		fvWekaAttributes.addElement(Attribute2);    
 		fvWekaAttributes.addElement(Attribute3); 
@@ -79,7 +90,7 @@ public class KmeansF17 {
 		fvWekaAttributes.addElement(Attribute14);
 		fvWekaAttributes.addElement(Attribute15);
 		fvWekaAttributes.addElement(Attribute16);
-		fvWekaAttributes.addElement(Attribute17);
+//		fvWekaAttributes.addElement(Attribute17);
 		
 //		塞入類惡意軟體名稱
 		int domainAmount_sub = domainAmount ;
@@ -109,7 +120,7 @@ public class KmeansF17 {
 				double value = Double.parseDouble( n );
 				iExample.setValue((Attribute)fvWekaAttributes.elementAt(j), value );
 			}
-			iExample.setValue((Attribute)fvWekaAttributes.elementAt(17), AttributeList[0] );
+			iExample.setValue((Attribute)fvWekaAttributes.elementAt(16), AttributeList[0] );
 			isTrainingSet.add(iExample);
 		}
 		

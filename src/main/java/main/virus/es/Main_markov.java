@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import java_cup.internal_error;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import tool.function.ElasticsearchFunction;
@@ -21,17 +17,18 @@ public class Main_markov {
 	ElasticsearchFunction es = new ElasticsearchFunction();
 	ArrayList<String> domainList = new ArrayList<String>();
 	final String  esIndex = "dga",esType = "CRIME";
+	final String featurePath = "experimentData/tagDataset/50Traindga.17f";
 	
 	public static void main(String[] args) throws Exception {
 
 		Main_markov mainClass = new Main_markov();
 
-//		MarkovModelBigramDomainList markovModel = new MarkovModelBigramDomainList();
-		MarkovModelUnigramDomainList markovModel = new MarkovModelUnigramDomainList();		//MarkovModelUnigramDomainList
+		MarkovModelBigramDomainList markovModel = new MarkovModelBigramDomainList();
+//		MarkovModelUnigramDomainList markovModel = new MarkovModelUnigramDomainList();		//MarkovModelUnigramDomainList
 
 		KmeansF17 kmeans = new KmeansF17();
-		
-		HashMap<Integer, ArrayList<String>> kMap = kmeans.Kmeans();
+		int k_value = 3;
+		HashMap<Integer, ArrayList<String>> kMap = kmeans.Kmeans(mainClass.featurePath,k_value);
 		Iterator it = kMap.entrySet().iterator();
 		while(it.hasNext()){
 			mainClass.domainList.clear();

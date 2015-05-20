@@ -17,7 +17,7 @@ public class Main_DetectDomain {
 	ArrayList<String> domainList = new ArrayList<String>();
 	ArrayList<String> markovChainsList = new ArrayList<String>();
 	ElasticsearchFunction es = new ElasticsearchFunction();
-	ReadWrite rw = new ReadWrite();
+//	ReadWrite rw = new ReadWrite();
 
 	String detectToFile = "data/dgaTest.txt";
 	String detectResult = "data/dgaMarkovResult.txt";
